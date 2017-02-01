@@ -106,7 +106,7 @@ class Video implements OutputInterface, AppendAttributeInterface
      *
      * @var array
      */
-    protected $tags = [];
+    protected $tags = array();
 
     /**
      * The video's category. For example, cooking.

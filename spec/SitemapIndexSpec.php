@@ -15,13 +15,13 @@ class SitemapIndexSpec extends ObjectBehavior
 
     function it_should_return_an_empty_array_by_default()
     {
-        $this->getSitemaps()->shouldReturn([]);
+        $this->getSitemaps()->shouldReturn(array());
     }
 
     function it_should_return_the_urls_added(Sitemap $sitemap)
     {
         $this->addSitemap($sitemap)->shouldReturn($this);
 
-        $this->getSitemaps()->shouldReturn([$sitemap]);
+        $this->getSitemaps()->shouldReturn(array($sitemap));
     }
 }

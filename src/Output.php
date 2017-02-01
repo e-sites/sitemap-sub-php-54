@@ -30,7 +30,7 @@ class Output
      *
      * @var array
      */
-    protected $processingInstructions = [];
+    protected $processingInstructions = array();
 
     /**
      * Renders the Sitemap as an XML string.

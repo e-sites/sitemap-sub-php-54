@@ -16,7 +16,7 @@ class SitemapIndex implements OutputInterface
      *
      * @var OutputInterface[]
      */
-    protected $sitemaps = [];
+    protected $sitemaps = array();
 
     /**
      * Add a new Sitemap object to the collection.

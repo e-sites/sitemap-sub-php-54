@@ -44,14 +44,14 @@ class Url implements OutputInterface
      *
      * @var OutputInterface[]
      */
-    protected $subelements = [];
+    protected $subelements = array();
 
     /**
      * Sub-elements that append to the collection attributes.
      *
      * @var AppendAttributeInterface[]
      */
-    protected $subelementsThatAppend = [];
+    protected $subelementsThatAppend = array();
 
     /**
      * Url constructor

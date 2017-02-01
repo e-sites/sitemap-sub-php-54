@@ -16,7 +16,7 @@ class Urlset implements OutputInterface
      *
      * @var OutputInterface[]
      */
-    protected $urls = [];
+    protected $urls = array();
 
     /**
      * Add a new URL object.
@@ -56,7 +56,7 @@ class Urlset implements OutputInterface
 
     /**
      * Get array of URL objects.
-     * 
+     *
      * @return OutputInterface[]
      */
     public function getUrls()
