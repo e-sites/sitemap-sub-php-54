@@ -1,5 +1,4 @@
-Thepixeldeveloper\Sitemap
-=========================
+# Thepixeldeveloper\Sitemap
 
 [![Version Status](http://php-eye.com/badge/thepixeldeveloper/sitemap/tested.svg?style=flat)](https://travis-ci.org/ThePixelDeveloper/Sitemap)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
@@ -8,15 +7,17 @@ Thepixeldeveloper\Sitemap
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/ed6d56e8-c908-44dc-9154-a8edc8b168bc.svg)](https://insight.sensiolabs.com/projects/ed6d56e8-c908-44dc-9154-a8edc8b168bc)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ThePixelDeveloper/Sitemap/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ThePixelDeveloper/Sitemap/?branch=master)
 
-
 A tool to generate XML sitemaps
 
-Basic Usage
------
+# Note:
+This is a fork of [ThePixelDeveloper's package](https://github.com/ThePixelDeveloper/Sitemap), which the one you should use. Only use this version if
+you need the same functionality to work on PHP < 5.4. _No support will be offered here_.
+
+## Basic Usage
 
 Generating a urlset sitemap
 
-``` php
+```php
 $urlSet = new Thepixeldeveloper\Sitemap\Urlset(); 
 
 $url = (new Thepixeldeveloper\Sitemap\Url($loc))
@@ -29,55 +30,52 @@ $urlSet->addUrl($url);
 
 Generating a sitemapindex sitemap
 
-
-``` php
-$sitemapIndex = new Thepixeldeveloper\Sitemap\SitemapIndex(); 
+```php
+$sitemapIndex = new Thepixeldeveloper\Sitemap\SitemapIndex();
 
 $url = (new Thepixeldeveloper\Sitemap\Sitemap($loc))
   ->setLastMod($lastMod);
-  
+
 $sitemapIndex->addSitemap($url);
 ```
 
 Then pass either SitemapIndex or Urlset to `Output` to generate output
 
-
-``` php
+```php
 echo (new Thepixeldeveloper\Sitemap\Output())->getOutput($sitemapIndex);
 ```
 
-Subelements
------------
+## Subelements
 
 You can add more specific information to a URL entry, ie video / image information
 
-**Image**
+### Image
 
-``` php
+```php
 $subelement = new Thepixeldeveloper\Sitemap\Subelements\Image('https://s3.amazonaws.com/path/to/image');
 ```
 
-**Video**
+### Video
 
-``` php
+```php
 $subelement = new Thepixeldeveloper\Sitemap\Subelements\Video('thumbnail', 'title', 'description');
 ```
 
-**Mobile**
+### Mobile
 
-``` php
+```php
 $subelement = new Thepixeldeveloper\Sitemap\Subelements\Mobile();
 ```
 
-**Link**
+### Link
 
-``` php
+```php
 $subelement = new Thepixeldeveloper\Sitemap\Subelements\Link('de', 'http://www.example.com/schweiz-deutsch/');
 ```
 
-**News**
+### News
 
-``` php
+```php
 $subelement = (new Thepixeldeveloper\Sitemap\Subelements\News())
     ->setPublicationDate(new \DateTime())
     ->setPublicationLanguage('en')
@@ -87,17 +85,16 @@ $subelement = (new Thepixeldeveloper\Sitemap\Subelements\News())
 
 Then you need to add the subelement to the URL
 
-``` php
+```php
 $url = new Thepixeldeveloper\Sitemap\Url('http://www.example.com/1')
 $url->addSubelement($subelement);
 ```
 
 and rendering is described above.
 
-Advanced Usage
---------------
+## Advanced Usage
 
-**Processing Instructions**
+### Processing instructions
 
 You can add processing instructions on the output as such.
 
@@ -108,25 +105,25 @@ $output->addProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="/path
 echo $output->getOutput($urlset);
 ```
 
-Which will add 
+Which will add
 
-``` xml
+```xml
 <?xml-stylesheet type="text/xsl" href="/path/to/xslt/main-sitemap.xsl"?>
 ```
 
 before the document starts.
 
-**Indenting output**
+### Indenting output
 
 Output is indented by default, can be turned off as follows
 
-``` php
+```php
 echo (new Thepixeldeveloper\Sitemap\Output())
     ->setIndented(false)
     ->getOutput($urlSet);
 ```
 
-Configuration
+### Configuration
 
 Name | Default | Values
 ---- | ------- | ------
@@ -134,8 +131,7 @@ setIndented | true | boolean
 setIndentString | 4 spaces | string
 
 
-Why should I use this over [cartographer](https://github.com/tackk/cartographer)?
-----
+# Why should I use this over [cartographer](https://github.com/tackk/cartographer)?
 
 * This library has less complexity. All it's going to do is build an object graph and spit it out as XML
 * Has support for a growing list of sub elements ie: mobile and images
